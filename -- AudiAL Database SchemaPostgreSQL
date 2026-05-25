@@ -1,0 +1,194 @@
+**Schema (PostgreSQL v17)**
+
+    -- =========================================
+    -- AudiAL Database Schema
+    -- PostgreSQL
+    -- =========================================
+    
+    CREATE TABLE users (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        full_name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+    
+        university VARCHAR(100),
+        major VARCHAR(100),
+        academic_level VARCHAR(50),
+    
+        profile_image TEXT,
+    
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE lectures (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        user_id UUID NOT NULL,
+    
+        title VARCHAR(255) NOT NULL,
+        audio_url TEXT NOT NULL,
+    
+        transcript TEXT,
+        summary TEXT,
+    
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+        CONSTRAINT fk_lecture_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE flashcards (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        lecture_id UUID NOT NULL,
+    
+        question TEXT NOT NULL,
+        answer TEXT NOT NULL,
+    
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+        CONSTRAINT fk_flashcard_lecture
+            FOREIGN KEY (lecture_id)
+            REFERENCES lectures(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE quizzes (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        user_id UUID NOT NULL,
+        lecture_id UUID NOT NULL,
+    
+        title VARCHAR(255),
+    
+        score INTEGER,
+    
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+        CONSTRAINT fk_quiz_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE,
+    
+        CONSTRAINT fk_quiz_lecture
+            FOREIGN KEY (lecture_id)
+            REFERENCES lectures(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE quiz_questions (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        quiz_id UUID NOT NULL,
+    
+        question TEXT NOT NULL,
+    
+        option_a TEXT NOT NULL,
+        option_b TEXT NOT NULL,
+        option_c TEXT NOT NULL,
+        option_d TEXT NOT NULL,
+    
+        correct_answer VARCHAR(1) NOT NULL,
+    
+        CONSTRAINT fk_question_quiz
+            FOREIGN KEY (quiz_id)
+            REFERENCES quizzes(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE progress (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        user_id UUID NOT NULL,
+    
+        course_name VARCHAR(255),
+        progress_percentage FLOAT DEFAULT 0,
+    
+        weak_topics TEXT,
+    
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+        CONSTRAINT fk_progress_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE ai_chat_messages (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        user_id UUID NOT NULL,
+    
+        sender VARCHAR(20) NOT NULL,
+        message TEXT NOT NULL,
+    
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+        CONSTRAINT fk_chat_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE notifications (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        user_id UUID NOT NULL,
+    
+        title VARCHAR(255),
+        body TEXT,
+    
+        is_read BOOLEAN DEFAULT FALSE,
+    
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+        CONSTRAINT fk_notification_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+    
+    CREATE TABLE study_plans (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+        user_id UUID NOT NULL,
+    
+        subject_name VARCHAR(255),
+        study_date DATE,
+    
+        start_time TIME,
+        end_time TIME,
+    
+        status VARCHAR(50) DEFAULT 'pending',
+    
+        CONSTRAINT fk_studyplan_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+    );
+    
+    -- =========================================
+
+---
+
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/G3k6aAa1p4Rr87WijJ3gK/1)
