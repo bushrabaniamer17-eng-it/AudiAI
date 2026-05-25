@@ -106,7 +106,7 @@ export default function QuizScreen() {
         </ScrollView>
         <View style={[styles.bottomBar, { paddingBottom: insets.bottom + 12, borderTopColor: theme.borderLight }]}>
           <Pressable onPress={startQuiz} style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1 }]}>
-            <LinearGradient colors={[theme.primary, '#E03A8C']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.ctaBtn}>
+            <LinearGradient colors={[theme.primary, '#1E3A5F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.ctaBtn}>
               <Text style={{ fontSize: 18, fontWeight: '700', color: '#FFF' }}>{t('ابدأ الكويز', 'Start Quiz')}</Text>
               <MaterialIcons name={isRTL ? 'arrow-back' : 'arrow-forward'} size={20} color="#FFF" />
             </LinearGradient>
@@ -222,7 +222,7 @@ export default function QuizScreen() {
           </Pressable>
         ) : (
           <Pressable onPress={nextQ}>
-            <LinearGradient colors={[theme.primary, '#E03A8C']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.ctaBtn}>
+            <LinearGradient colors={[theme.primary, '#1E3A5F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.ctaBtn}>
               <Text style={{ fontSize: 16, fontWeight: '700', color: '#FFF' }}>{currentQ < questions.length - 1 ? t('السؤال التالي', 'Next') : t('عرض النتيجة', 'Results')}</Text>
               <MaterialIcons name={isRTL ? 'arrow-back' : 'arrow-forward'} size={18} color="#FFF" />
             </LinearGradient>

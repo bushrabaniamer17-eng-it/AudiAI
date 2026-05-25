@@ -52,7 +52,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [themeMode, setThemeMode] = useState<ThemeMode>('light');
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useState<Language>('en');
   const [isOnboarded, setIsOnboarded] = useState(false);
   const [student, setStudent] = useState<StudentProfile>(mockStudent);
   const [courses] = useState<Course[]>(mockCourses);

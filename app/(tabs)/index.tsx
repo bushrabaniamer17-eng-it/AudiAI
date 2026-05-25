@@ -56,7 +56,7 @@ export default function HomeScreen() {
 
         {/* Hero Progress */}
         <Animated.View entering={FadeInDown.delay(150).duration(500)}>
-          <LinearGradient colors={[theme.primary, '#E03A8C']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.heroCard}>
+          <LinearGradient colors={[theme.primary, '#1E3A5F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.heroCard}>
             <View style={styles.heroContent}>
               <View style={{ flex: 1 }}>
                 <Text style={styles.heroLabel}>{t('خطة اليوم', "TODAY'S PLAN")}</Text>

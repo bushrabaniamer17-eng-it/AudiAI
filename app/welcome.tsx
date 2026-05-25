@@ -82,7 +82,7 @@ export default function WelcomeScreen() {
       <Animated.View entering={FadeInDown.delay(900).duration(600)} style={styles.ctaWrap}>
         <Pressable onPress={handleContinue} style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }]}>
           <LinearGradient
-            colors={[theme.primary, theme.primaryDark]}
+            colors={[theme.primary, '#1E3A5F']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
             style={styles.ctaButton}

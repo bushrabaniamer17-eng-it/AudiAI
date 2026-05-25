@@ -3,15 +3,15 @@ import { Platform } from 'react-native';
 export type ThemeMode = 'light' | 'dark';
 
 const shared = {
-  primary: '#FF4FA3',
-  primaryLight: '#FF7FBF',
-  primaryDark: '#E03A8C',
-  primaryFaded: '#FFF0F7',
+  primary: '#38BDF8',
+  primaryLight: '#7DD3FC',
+  primaryDark: '#0EA5E9',
+  primaryFaded: '#F0F9FF',
 
-  accent: '#FFD54A',
-  accentLight: '#FFE680',
-  accentDark: '#F5C200',
-  accentFaded: '#FFFBEB',
+  accent: '#1E3A5F',
+  accentLight: '#2D4A6F',
+  accentDark: '#0F2840',
+  accentFaded: '#EFF6FF',
 
   success: '#10B981',
   successLight: '#D1FAE5',
@@ -89,8 +89,8 @@ export const darkTheme: typeof lightTheme = {
   surfaceSecondary: '#262640',
   surfaceElevated: '#222238',
 
-  primaryFaded: '#3D1A2E',
-  accentFaded: '#332D15',
+  primaryFaded: '#0C2D48',
+  accentFaded: '#162A40',
   successLight: '#0D3D2E',
   warningLight: '#3D2E0D',
   errorLight: '#3D1515',

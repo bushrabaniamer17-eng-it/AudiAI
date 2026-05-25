@@ -56,7 +56,7 @@ export default function ProfileScreen() {
 
         {/* Profile Card */}
         <Animated.View entering={FadeInDown.delay(100).duration(500)}>
-          <LinearGradient colors={[theme.primary, '#E03A8C']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.profileCard}>
+          <LinearGradient colors={[theme.primary, '#1E3A5F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.profileCard}>
             <View style={styles.avatarCircle}>
               <Text style={styles.avatarText}>{student.name.charAt(0)}</Text>
             </View>

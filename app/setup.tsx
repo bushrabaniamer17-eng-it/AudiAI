@@ -198,7 +198,7 @@ export default function SetupScreen() {
           style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }]}
         >
           <LinearGradient
-            colors={canProceed() ? [theme.primary, theme.primaryDark] : [theme.border, theme.border]}
+            colors={canProceed() ? [theme.primary, '#1E3A5F'] : [theme.border, theme.border]}
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
             style={styles.ctaBtn}
           >

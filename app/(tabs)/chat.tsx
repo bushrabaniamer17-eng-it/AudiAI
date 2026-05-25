@@ -162,7 +162,7 @@ export default function ChatScreen() {
             style={({ pressed }) => [{ opacity: pressed ? 0.8 : 1 }]}
           >
             <LinearGradient
-              colors={input.trim() ? [theme.primary, theme.primaryDark] : [theme.border, theme.border]}
+              colors={input.trim() ? [theme.primary, '#1E3A5F'] : [theme.border, theme.border]}
               style={styles.sendBtn}
             >
               <MaterialIcons name="send" size={20} color="#FFF" style={{ transform: [{ scaleX: isRTL ? -1 : 1 }] }} />
